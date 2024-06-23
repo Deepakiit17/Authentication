@@ -1,13 +1,14 @@
 // src/components/SignUp.js
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Box, Button, TextField, Typography, Container } from "@mui/material";
 
-const SignUp = () => {
+const SignUp = ({ setAuth }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,9 +16,9 @@ const SignUp = () => {
       alert("Passwords do not match");
       return;
     }
-    // Handle signup logic here
-    console.log("Email:", email);
-    console.log("Password:", password);
+    // Simulate signup logic
+    setAuth(true);
+    navigate("/dashboard");
   };
 
   return (
@@ -77,9 +78,6 @@ const SignUp = () => {
           >
             Sign Up
           </Button>
-          <Typography variant="body2" align="center">
-            Already have an account? <Link to="/login">Login</Link>
-          </Typography>
         </Box>
       </Box>
     </Container>

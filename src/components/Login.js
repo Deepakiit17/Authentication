@@ -1,18 +1,19 @@
 // src/components/Login.js
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Box, Button, TextField, Typography, Container } from "@mui/material";
 
-const Login = () => {
+const Login = ({ setAuth }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log("Email:", email);
-    console.log("Password:", password);
+    // Simulate login logic
+    setAuth(true);
+    navigate("/home");
   };
 
   return (
@@ -61,9 +62,6 @@ const Login = () => {
           >
             Login
           </Button>
-          <Typography variant="body2" align="center">
-            Don't have an account? <Link to="/signup">Sign Up</Link>
-          </Typography>
         </Box>
       </Box>
     </Container>
